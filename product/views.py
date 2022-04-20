@@ -1,24 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from product.models import Product
+
 # Create your views here.
 
 def welcome (request):
 
-    product =[
-        {
-            'name': 'pump',
-            'desc' : 'pumping tool'
-        },
-        {
-            'name': 'solar panel',
-            'desc' : 'solar energy'
-        },
-        {
-            'name': 'batteries panel',
-            'desc' : 'invventers energy'
-        }
-    ]
+    product = Product.objects.all()
     return render(request, 'product/product.html', {
         'product' : product
     })
